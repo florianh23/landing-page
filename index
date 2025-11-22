@@ -8,30 +8,22 @@
       name="description"
       content="Der Connection Planner hilft dir, Freundschaften mit derselben Hingabe zu pflegen wie dein Business oder deine Routinen. Trag dich in die Warteliste ein."
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link
-      rel="preconnect"
-      href="https://fonts.googleapis.com"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
-        --bg: #faf9f6;
-        --card: #fffdf9;
-        --text-primary: #2c2c2c;
-        --text-secondary: #6b6b6b;
-        --accent: #7c9a6e;
-        --accent-strong: #5f7d55;
-        --accent-muted: #e8e4df;
-        --line: #d9d3cb;
+        --bg: #ffffff;
+        --bg-alt: #f3f3f3;
+        --card: #ffffff;
+        --text-primary: #121212;
+        --text-secondary: rgba(18, 18, 18, 0.68);
+        --accent: #334fb4;
+        --accent-strong: #1f2f7a;
+        --line: #e0e0e0;
       }
 
       *,
@@ -46,7 +38,7 @@
 
       body {
         margin: 0;
-        font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+        font-family: "Assistant", "Helvetica Neue", Arial, sans-serif;
         background: var(--bg);
         color: var(--text-primary);
         line-height: 1.65;
@@ -67,14 +59,13 @@
         display: grid;
         gap: 48px;
         align-items: center;
-        padding-top: 40px;
+        padding-top: 32px;
       }
 
       .hero-copy h1 {
-        font-family: "Fraunces", "Times New Roman", serif;
-        font-size: clamp(2.6rem, 6vw, 4.1rem);
+        font-size: clamp(2.4rem, 6vw, 4rem);
         margin: 16px 0;
-        letter-spacing: -0.02em;
+        letter-spacing: -0.01em;
       }
 
       .hero-copy p {
@@ -85,7 +76,7 @@
       }
 
       .eyebrow {
-        letter-spacing: 0.4em;
+        letter-spacing: 0.35em;
         text-transform: uppercase;
         font-size: 0.85rem;
         color: var(--text-secondary);
@@ -109,19 +100,18 @@
         cursor: pointer;
         min-height: 48px;
         letter-spacing: 0.03em;
-        transition: transform 220ms ease, box-shadow 220ms ease,
-          background 220ms ease;
+        transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
       }
 
       .cta-button:focus-visible {
-        outline: 3px solid rgba(124, 154, 110, 0.4);
+        outline: 3px solid rgba(51, 79, 180, 0.25);
         outline-offset: 4px;
       }
 
       .cta-button:hover {
         transform: translateY(-2px);
         background: var(--accent-strong);
-        box-shadow: 0 12px 24px rgba(124, 154, 110, 0.28);
+        box-shadow: 0 12px 24px rgba(51, 79, 180, 0.28);
       }
 
       .microcopy {
@@ -130,12 +120,13 @@
       }
 
       .hero-visual {
-        background: linear-gradient(180deg, #f3efe7, #fefdf9);
-        border-radius: 32px;
+        background: linear-gradient(145deg, #f8f8f8, #ffffff);
+        border-radius: 28px;
         padding: 32px;
         position: relative;
         overflow: hidden;
         min-height: 360px;
+        border: 1px solid var(--line);
       }
 
       .hero-visual::before,
@@ -143,23 +134,22 @@
         content: "";
         position: absolute;
         border-radius: 50%;
-        opacity: 0.35;
+        opacity: 0.3;
+        background: var(--bg-alt);
       }
 
       .hero-visual::before {
-        width: 360px;
-        height: 360px;
-        background: var(--accent-muted);
-        top: -60px;
-        left: -80px;
+        width: 320px;
+        height: 320px;
+        top: -50px;
+        left: -70px;
       }
 
       .hero-visual::after {
-        width: 280px;
-        height: 280px;
-        background: #d7e3d0;
-        bottom: -120px;
-        right: -40px;
+        width: 260px;
+        height: 260px;
+        bottom: -100px;
+        right: -30px;
       }
 
       .hero-visual svg {
@@ -168,11 +158,9 @@
         height: 100%;
       }
 
-      .eyebrow + h2,
-      h2.section-title {
-        font-family: "Fraunces", "Times New Roman", serif;
+      .section-title {
         font-size: clamp(2rem, 4vw, 3rem);
-        margin: 16px 0;
+        margin: 16px 0 12px;
       }
 
       .section-copy {
@@ -196,18 +184,13 @@
 
       .plant {
         border: 1px solid var(--line);
-        border-radius: 24px;
+        border-radius: 22px;
         padding: 24px;
-        background: #fff;
+        background: var(--bg);
         min-height: 220px;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-      }
-
-      .plant svg {
-        width: 100%;
-        height: 140px;
       }
 
       .plant-label {
@@ -225,13 +208,12 @@
 
       .pillar {
         background: var(--card);
-        border-radius: 28px;
+        border-radius: 26px;
         padding: 24px;
-        border: 1px solid rgba(44, 44, 44, 0.08);
+        border: 1px solid rgba(18, 18, 18, 0.08);
       }
 
       .pillar strong {
-        font-family: "Fraunces", "Times New Roman", serif;
         display: block;
         font-size: 1.3rem;
         margin-bottom: 12px;
@@ -257,9 +239,9 @@
 
       .proof-card {
         background: var(--card);
-        border-radius: 32px;
+        border-radius: 30px;
         padding: 32px;
-        border: 1px solid rgba(44, 44, 44, 0.08);
+        border: 1px solid rgba(18, 18, 18, 0.08);
         display: grid;
         gap: 18px;
       }
@@ -272,8 +254,7 @@
 
       #waitlist-count {
         font-size: 2.8rem;
-        font-family: "Fraunces", "Times New Roman", serif;
-        color: var(--accent-strong);
+        color: var(--accent);
       }
 
       .counter-label {
@@ -288,16 +269,15 @@
       }
 
       .waitlist-card {
-        background: #ffffff;
-        border-radius: 40px;
+        background: var(--card);
+        border-radius: 38px;
         padding: 48px;
-        border: 1px solid rgba(44, 44, 44, 0.06);
-        box-shadow: 0 40px 80px rgba(34, 40, 34, 0.08);
+        border: 1px solid rgba(18, 18, 18, 0.06);
+        box-shadow: 0 40px 80px rgba(18, 18, 18, 0.08);
       }
 
       .waitlist-card h2 {
-        font-family: "Fraunces", "Times New Roman", serif;
-        font-size: clamp(2.2rem, 4vw, 3rem);
+        font-size: clamp(2.1rem, 4vw, 3rem);
         margin: 0 0 12px;
       }
 
@@ -321,14 +301,14 @@
         padding: 16px 20px;
         font-size: 1rem;
         min-height: 52px;
-        background: #fff;
+        background: var(--bg);
         transition: border 180ms ease, box-shadow 180ms ease;
       }
 
       input[type="email"]:focus-visible {
         outline: none;
         border-color: var(--accent);
-        box-shadow: 0 0 0 3px rgba(124, 154, 110, 0.25);
+        box-shadow: 0 0 0 3px rgba(51, 79, 180, 0.2);
       }
 
       .submit-button {
@@ -341,13 +321,12 @@
         font-size: 1rem;
         min-height: 52px;
         cursor: pointer;
-        transition: transform 220ms ease, background 220ms ease,
-          box-shadow 220ms ease;
+        transition: transform 220ms ease, background 220ms ease, box-shadow 220ms ease;
       }
 
       .submit-button:hover {
         transform: translateY(-2px);
-        background: #1f1f1f;
+        background: #000000;
         box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
       }
 
@@ -367,13 +346,12 @@
         max-width: 1080px;
         margin: 0 auto;
         padding: 40px 20px 80px;
-        border-top: 1px solid rgba(44, 44, 44, 0.08);
+        border-top: 1px solid rgba(18, 18, 18, 0.08);
         text-align: center;
         color: var(--text-secondary);
       }
 
       .logo {
-        font-family: "Fraunces", "Times New Roman", serif;
         font-size: 1.1rem;
         letter-spacing: 0.2em;
         text-transform: uppercase;
@@ -484,31 +462,23 @@
         <div class="hero-visual" aria-hidden="true">
           <svg viewBox="0 0 400 320" role="presentation">
             <path
-              d="M210 300c0-40 40-72 40-120 0-48-32-72-32-112"
+              d="M210 300c0-40 42-72 42-120 0-48-32-72-32-112"
               fill="none"
-              stroke="#7c9a6e"
+              stroke="#334fb4"
               stroke-width="3"
               stroke-linecap="round"
             />
             <path
               d="M170 300c0-32-56-64-56-112s48-72 48-120"
               fill="none"
-              stroke="#b8c7b1"
+              stroke="rgba(18,18,18,0.3)"
               stroke-width="3"
               stroke-linecap="round"
             />
-            <circle cx="248" cy="60" r="18" fill="#9fb895" />
-            <circle cx="144" cy="140" r="14" fill="#d3ddc9" />
-            <circle cx="212" cy="196" r="16" fill="#7c9a6e" />
-            <rect
-              x="90"
-              y="260"
-              width="220"
-              height="28"
-              rx="14"
-              fill="#e8e4df"
-              opacity="0.8"
-            />
+            <circle cx="248" cy="60" r="18" fill="#334fb4" opacity="0.35" />
+            <circle cx="144" cy="140" r="14" fill="#121212" opacity="0.15" />
+            <circle cx="212" cy="196" r="16" fill="#334fb4" opacity="0.5" />
+            <rect x="90" y="260" width="220" height="28" rx="14" fill="#f3f3f3" />
           </svg>
         </div>
       </section>
@@ -533,19 +503,19 @@
             <svg viewBox="0 0 200 140">
               <path
                 d="M100 130c0-28-24-34-24-68 0-24 12-40 12-60"
-                stroke="#c9beb1"
+                stroke="rgba(18,18,18,0.25)"
                 stroke-width="4"
                 fill="none"
                 stroke-linecap="round"
               />
               <path
                 d="M88 60c-16-4-28 4-36 22"
-                stroke="#dcd2c7"
+                stroke="#d6d6d6"
                 stroke-width="4"
                 fill="none"
                 stroke-linecap="round"
               />
-              <circle cx="80" cy="36" r="10" fill="#d9cfc4" />
+              <circle cx="80" cy="36" r="10" fill="#e2e2e2" />
             </svg>
             <p class="plant-label">Vergessene Verbindung</p>
           </div>
@@ -553,20 +523,20 @@
             <svg viewBox="0 0 200 140">
               <path
                 d="M100 130c0-32 32-44 32-84 0-24-8-36-8-56"
-                stroke="#7c9a6e"
+                stroke="#334fb4"
                 stroke-width="4"
                 fill="none"
                 stroke-linecap="round"
               />
               <path
                 d="M120 64c18-6 30 6 36 26"
-                stroke="#94b083"
+                stroke="#566cd3"
                 stroke-width="4"
                 fill="none"
                 stroke-linecap="round"
               />
-              <circle cx="116" cy="32" r="12" fill="#9cb78d" />
-              <circle cx="150" cy="78" r="10" fill="#b8cbae" />
+              <circle cx="116" cy="32" r="12" fill="#334fb4" opacity="0.45" />
+              <circle cx="150" cy="78" r="10" fill="#334fb4" opacity="0.25" />
             </svg>
             <p class="plant-label">Gepflegte Nähe</p>
           </div>
@@ -682,9 +652,7 @@
         <span>·</span>
         <a href="/datenschutz" target="_blank" rel="noreferrer noopener">Datenschutz</a>
         <span>·</span>
-        <a href="https://www.instagram.com" target="_blank" rel="noreferrer noopener"
-          >Instagram</a
-        >
+        <a href="https://www.instagram.com" target="_blank" rel="noreferrer noopener">Instagram</a>
       </div>
     </footer>
 
@@ -764,7 +732,6 @@
             return;
           }
 
-          // Placeholder for backend integration (Mailchimp/ConvertKit/etc.)
           setTimeout(() => {
             waitlistSection?.setAttribute("data-state", "success");
             waitlistForm.reset();
