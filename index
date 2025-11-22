@@ -1,1 +1,293 @@
-Hello World
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Connection Planner</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f7f7f7;
+        --text: #111;
+        --muted: #666;
+        --accent: #0b62ff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      header,
+      main {
+        max-width: 960px;
+        margin: auto;
+        padding: 80px 24px 40px;
+      }
+
+      header {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        margin: 0;
+        letter-spacing: -0.04em;
+      }
+
+      p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.1rem;
+      }
+
+      .hero-copy {
+        max-width: 700px;
+      }
+
+      form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        max-width: 560px;
+      }
+
+      input[type="email"] {
+        flex: 1 1 260px;
+        padding: 16px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        background: white;
+        font-size: 1rem;
+      }
+
+      button {
+        padding: 16px 28px;
+        border-radius: 999px;
+        border: none;
+        background: var(--text);
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: transform 150ms ease, box-shadow 150ms ease;
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      section {
+        padding: 60px 24px;
+        max-width: 960px;
+        margin: auto;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .section-title {
+        font-size: 1rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 24px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 32px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 18px;
+        padding: 32px;
+        min-height: 230px;
+        box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+      }
+
+      .card h3 {
+        margin-top: 0;
+        font-size: 1.3rem;
+      }
+
+      .card p {
+        color: var(--muted);
+        font-size: 1rem;
+      }
+
+      .microcopy {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-top: 12px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 40px 24px 60px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <p>Connection Planner</p>
+        <h1>
+          Ein System, um Freundschaften mit derselben Hingabe zu pflegen, mit
+          der du dein Business, deinen Körper oder deine Routinen aufbaust.
+        </h1>
+      </div>
+      <div class="hero-copy">
+        <p>
+          Freundschaften sind der stille Rohstoff für Lebensfreude, mentale
+          Gesundheit und Sinn. Der Connection Planner wird zu deinem emotionalen
+          Greenkeeper: Er schafft Struktur, Rituale und Mikro-Momente, damit
+          Nähe kein Zufall bleibt.
+        </p>
+      </div>
+      <form>
+        <input type="email" placeholder="E-Mail-Adresse" required />
+        <button type="submit">Auf Warteliste setzen</button>
+      </form>
+      <p class="microcopy">
+        Erhalte als Erste·r Zugang zur Produktwarteschlange + Early-Access-Rituale.
+      </p>
+    </header>
+
+    <main>
+      <section>
+        <div class="section-title">Warum es existiert</div>
+        <div class="grid">
+          <div class="card">
+            <h3>Lebensqualität sichtbar machen</h3>
+            <p>
+              Wir investieren in Komfort, Körper und Karriere – doch Freundschaften
+              bleiben zu oft Zufall. Der Planner hilft dir, die wichtigsten Menschen
+              in deinem Leben sichtbar zu priorisieren.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Verbindung als Gewohnheit</h3>
+            <p>
+              Inspiriert von Habit Stacking und Relationship Capital wird Nähe zur
+              Routine: Mikromomente, Erinnerungen und Rituale halten deinen sozialen
+              Garten in Bestform.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Emotionale Tiefenpflege</h3>
+            <p>
+              Vulnerabilität und Achtsamkeit schaffen echte Nähe. Der Connection Planner
+              gibt dir die Fragen, Reflexionen und Prompt-Impulse, die Gespräche auf ein
+              neues Niveau heben.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">Das emotionale Betriebssystem</div>
+        <div class="grid">
+          <div class="card">
+            <h3>Über-mich-Monografie</h3>
+            <p>
+              Story, Werte und aktuelle Herausforderungen werden bewusst reflektiert, um
+              Freundschaften mit echter Offenheit zu führen. Vulnerabilität wird zum
+              Startpunkt tiefer Gespräche.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Freundschafts-Kalender</h3>
+            <p>
+              Minimalistischer Kalender mit Ritual-Terminen, Follow-up Prompts und
+              wöchentlicher KPI für Deeptalks. Jede Erinnerung ist ein Mikroschritt Richtung Nähe.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Friendship Capsules</h3>
+            <p>
+              Herausnehmbare Hefte pro Freund, mit Steckbrief, Erinnerungen und
+              Übergabe-Modus. Analoges „Friendship Loop“ für wiederkehrende Tiefe.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Begegnungs-Notizbuch</h3>
+            <p>
+              2-Minuten-Reflexion nach jedem Treffen: Was hast du gelernt, was bewegt ihn,
+              woran möchtest du beim nächsten Mal anknüpfen? Herzliche Follow-ups inklusive.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Heart Prompts</h3>
+            <p>
+              Kuratierte Fragen von Warm-up bis Depth Zone. Perfekt für Spaziergänge,
+              Roadtrips oder Abende voller echter Gespräche.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Habit Design</h3>
+            <p>
+              Weekly Review, Mini-Geste, Dopamin-Reward, Monthly Momentum. Ein Atomic-Habit
+              Loop für Nähe, die sich natürlich anfühlt.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">Der Funnel</div>
+        <div class="grid">
+          <div class="card">
+            <h3>1 · Selbsterkenntnis</h3>
+            <p>
+              Starte mit der Über-mich-Seite und erkenne, wo dein Freundschaftsgarten Pflege braucht.
+            </p>
+          </div>
+          <div class="card">
+            <h3>2 · Ritualisieren</h3>
+            <p>
+              Setze Kalenderimpulse, Capsule-Updates und Heart Prompts ein – jede Woche ein Mikromoment.
+            </p>
+          </div>
+          <div class="card">
+            <h3>3 · Teilen & vertiefen</h3>
+            <p>
+              Überreiche die Hefte, tausche Reflexionen, verankere Follow-ups. Nähe wird zum erneuerbaren System.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section>
+      <div class="section-title">Warteliste</div>
+      <h2 style="font-size: 2rem; margin-top: 0;">
+        Connection Momentum starten?
+      </h2>
+      <p class="hero-copy">
+        Trage dich ein und erhalte frühzeitig Zugang zu Templates, Ritual-Prompts
+        und limitierten physischen Inserts des Connection Planner.
+      </p>
+      <form style="margin-top: 32px;">
+        <input type="email" placeholder="E-Mail-Adresse" required />
+        <button type="submit">Early Access reservieren</button>
+      </form>
+      <p class="microcopy">
+        Keine Spam-Mails. Nur Signals, die Freundschaften lebendig halten.
+      </p>
+    </section>
+
+    <footer>© 2025 Connection Planner · Das emotionale Betriebssystem für Freundschaften</footer>
+  </body>
+</html>
