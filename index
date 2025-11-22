@@ -3,422 +3,741 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Connection Planner</title>
+    <title>Connection Planner – Freundschaften mit System pflegen</title>
+    <meta
+      name="description"
+      content="Der Connection Planner hilft dir, Freundschaften mit derselben Hingabe zu pflegen wie dein Business oder deine Routinen. Trag dich in die Warteliste ein."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
-        --bg: #f4f6f8;
-        --surface: #ffffff;
-        --text: #1a1f36;
-        --muted: #5f6c8f;
-        --accent: #2563eb;
-        --accent-soft: #dbe8ff;
+        --bg: #ffffff;
+        --bg-alt: #f3f3f3;
+        --card: #ffffff;
+        --text-primary: #121212;
+        --text-secondary: rgba(18, 18, 18, 0.68);
+        --accent: #334fb4;
+        --accent-strong: #1f2f7a;
+        --line: #e0e0e0;
       }
 
-      * {
+      *,
+      *::before,
+      *::after {
         box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
       }
 
       body {
         margin: 0;
-        font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        font-family: "Assistant", "Helvetica Neue", Arial, sans-serif;
         background: var(--bg);
-        color: var(--text);
-        line-height: 1.6;
+        color: var(--text-primary);
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
       }
 
-      .shell {
-        max-width: 1140px;
+      main {
+        max-width: 1080px;
         margin: 0 auto;
-        padding: 0 24px;
+        padding: 32px 20px 120px;
       }
 
-      header {
-        background: linear-gradient(120deg, #0f6fec, #62a8ff);
-        padding: 32px 0 80px;
-        color: white;
-      }
-
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 0 24px;
-      }
-
-      nav span {
-        font-weight: 600;
-        letter-spacing: 0.02em;
-      }
-
-      nav a {
-        color: rgba(255, 255, 255, 0.85);
-        text-decoration: none;
-        margin-left: 24px;
-        font-size: 0.95rem;
+      section {
+        padding: 72px 0;
       }
 
       .hero {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 48px;
         align-items: center;
         padding-top: 32px;
       }
 
-      .hero h1 {
-        font-size: clamp(2.5rem, 4vw, 3.8rem);
-        margin: 0 0 24px;
-        letter-spacing: -0.03em;
+      .hero-copy h1 {
+        font-size: clamp(2.4rem, 6vw, 4rem);
+        margin: 16px 0;
+        letter-spacing: -0.01em;
       }
 
-      .hero p {
+      .hero-copy p {
+        font-size: 1.15rem;
+        color: var(--text-secondary);
         margin: 0 0 24px;
+        max-width: 540px;
+      }
+
+      .eyebrow {
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+
+      .hero-cta {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+      }
+
+      .cta-button {
+        border: none;
+        background: var(--accent);
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 600;
+        padding: 16px 32px;
+        border-radius: 999px;
+        cursor: pointer;
+        min-height: 48px;
+        letter-spacing: 0.03em;
+        transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
+      }
+
+      .cta-button:focus-visible {
+        outline: 3px solid rgba(51, 79, 180, 0.25);
+        outline-offset: 4px;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-2px);
+        background: var(--accent-strong);
+        box-shadow: 0 12px 24px rgba(51, 79, 180, 0.28);
+      }
+
+      .microcopy {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+
+      .hero-visual {
+        background: linear-gradient(145deg, #f8f8f8, #ffffff);
+        border-radius: 28px;
+        padding: 32px;
+        position: relative;
+        overflow: hidden;
+        min-height: 360px;
+        border: 1px solid var(--line);
+      }
+
+      .hero-visual::before,
+      .hero-visual::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.3;
+        background: var(--bg-alt);
+      }
+
+      .hero-visual::before {
+        width: 320px;
+        height: 320px;
+        top: -50px;
+        left: -70px;
+      }
+
+      .hero-visual::after {
+        width: 260px;
+        height: 260px;
+        bottom: -100px;
+        right: -30px;
+      }
+
+      .hero-visual svg {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .section-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin: 16px 0 12px;
+      }
+
+      .section-copy {
+        max-width: 720px;
+        color: var(--text-secondary);
+        font-size: 1.05rem;
+        margin-bottom: 32px;
+      }
+
+      .mirror-body p {
+        margin: 12px 0;
         font-size: 1.1rem;
-        color: rgba(255, 255, 255, 0.87);
+      }
+
+      .plant-duo {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
+        margin-top: 32px;
+      }
+
+      .plant {
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 24px;
+        background: var(--bg);
+        min-height: 220px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+
+      .plant-label {
+        text-align: center;
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        margin-top: 16px;
+        letter-spacing: 0.05em;
+      }
+
+      .pillars {
+        display: grid;
+        gap: 24px;
+      }
+
+      .pillar {
+        background: var(--card);
+        border-radius: 26px;
+        padding: 24px;
+        border: 1px solid rgba(18, 18, 18, 0.08);
+      }
+
+      .pillar strong {
+        display: block;
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+      }
+
+      .quote {
+        border-left: 2px solid var(--accent);
+        padding-left: 20px;
+        font-style: italic;
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        margin-top: 32px;
+      }
+
+      .quote span {
+        display: block;
+        margin-top: 16px;
+        font-size: 0.95rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--text-secondary);
+      }
+
+      .proof-card {
+        background: var(--card);
+        border-radius: 30px;
+        padding: 32px;
+        border: 1px solid rgba(18, 18, 18, 0.08);
+        display: grid;
+        gap: 18px;
+      }
+
+      .counter {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+      }
+
+      #waitlist-count {
+        font-size: 2.8rem;
+        color: var(--accent);
+      }
+
+      .counter-label {
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        color: var(--text-secondary);
+      }
+
+      .waitlist {
+        padding-bottom: 80px;
+      }
+
+      .waitlist-card {
+        background: var(--card);
+        border-radius: 38px;
+        padding: 48px;
+        border: 1px solid rgba(18, 18, 18, 0.06);
+        box-shadow: 0 40px 80px rgba(18, 18, 18, 0.08);
+      }
+
+      .waitlist-card h2 {
+        font-size: clamp(2.1rem, 4vw, 3rem);
+        margin: 0 0 12px;
+      }
+
+      .waitlist-card p {
+        margin: 0 0 24px;
+        color: var(--text-secondary);
+        font-size: 1.05rem;
       }
 
       form {
         display: flex;
         flex-wrap: wrap;
         gap: 12px;
+        margin-bottom: 12px;
       }
 
       input[type="email"] {
         flex: 1 1 260px;
-        padding: 14px 18px;
-        border-radius: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 16px 20px;
         font-size: 1rem;
+        min-height: 52px;
+        background: var(--bg);
+        transition: border 180ms ease, box-shadow 180ms ease;
       }
 
-      button {
-        padding: 14px 22px;
-        border-radius: 8px;
+      input[type="email"]:focus-visible {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(51, 79, 180, 0.2);
+      }
+
+      .submit-button {
+        padding: 16px 32px;
+        border-radius: 999px;
         border: none;
-        background: var(--accent);
-        color: white;
+        background: var(--text-primary);
+        color: #fff;
+        font-weight: 600;
         font-size: 1rem;
-        font-weight: 600;
+        min-height: 52px;
         cursor: pointer;
-        transition: background 150ms ease, transform 150ms ease;
+        transition: transform 220ms ease, background 220ms ease, box-shadow 220ms ease;
       }
 
-      button:hover {
-        background: #1f4fbf;
-        transform: translateY(-1px);
+      .submit-button:hover {
+        transform: translateY(-2px);
+        background: #000000;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
       }
 
-      .hero-panel {
-        background: rgba(255, 255, 255, 0.12);
-        border-radius: 16px;
-        padding: 32px;
-        backdrop-filter: blur(6px);
+      .waitlist[data-state="success"] .default-state {
+        display: none;
       }
 
-      main section {
-        padding: 80px 0;
+      .waitlist[data-state="success"] .success-state {
+        display: block;
       }
 
-      .section-title {
-        font-size: 0.9rem;
-        letter-spacing: 0.3em;
-        text-transform: uppercase;
-        color: var(--muted);
-        margin-bottom: 16px;
-      }
-
-      .section-headline {
-        font-size: clamp(2rem, 3vw, 2.6rem);
-        margin: 0 0 24px;
-      }
-
-      .section-copy {
-        max-width: 720px;
-        margin-bottom: 48px;
-        color: var(--muted);
-        font-size: 1.05rem;
-      }
-
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 24px;
-      }
-
-      .card {
-        background: var(--surface);
-        border-radius: 14px;
-        padding: 28px;
-        border: 1px solid #e3e8f5;
-        box-shadow: 0 12px 24px rgba(15, 23, 42, 0.06);
-      }
-
-      .card h3 {
-        margin-top: 0;
-        font-size: 1.15rem;
-      }
-
-      .card p {
-        color: var(--muted);
-        font-size: 0.98rem;
-      }
-
-      .funnel-steps .card {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .funnel-steps span {
-        font-weight: 600;
-        color: var(--accent);
-      }
-
-      .cta-section {
-        background: var(--surface);
-        border-radius: 18px;
-        padding: 48px;
-        box-shadow: 0 18px 35px rgba(15, 23, 42, 0.08);
-      }
-
-      .microcopy {
-        font-size: 0.9rem;
-        color: var(--muted);
-        margin-top: 12px;
+      .success-state {
+        display: none;
       }
 
       footer {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 40px 20px 80px;
+        border-top: 1px solid rgba(18, 18, 18, 0.08);
         text-align: center;
-        padding: 40px 24px 60px;
-        color: var(--muted);
+        color: var(--text-secondary);
+      }
+
+      .logo {
+        font-size: 1.1rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 12px;
+        color: var(--text-primary);
+      }
+
+      .legal-links {
+        display: inline-flex;
+        gap: 12px;
         font-size: 0.9rem;
       }
 
-      @media (max-width: 640px) {
-        header {
-          border-bottom-left-radius: 32px;
-          border-bottom-right-radius: 32px;
+      .legal-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+      }
+
+      .legal-links a:hover {
+        text-decoration: underline;
+      }
+
+      .fade-in {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 600ms ease, transform 600ms ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+
+      @media (max-width: 768px) {
+        main {
+          padding-top: 16px;
         }
 
-        .cta-section {
-          padding: 32px;
+        section {
+          padding: 56px 0;
+        }
+
+        .hero {
+          padding-top: 0;
+        }
+
+        .waitlist-card {
+          padding: 32px 24px;
+        }
+
+        form {
+          flex-direction: column;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .hero {
+          grid-template-columns: 1.1fr 0.9fr;
+        }
+
+        .pillars {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .fade-in,
+        .cta-button,
+        .submit-button {
+          transition: none !important;
         }
       }
     </style>
   </head>
   <body>
-    <header>
-      <div class="shell">
-        <nav>
-          <span>Connection Planner</span>
-          <div>
-            <a href="#why">Purpose</a>
-            <a href="#os">Blueprint</a>
-            <a href="#funnel">Funnel</a>
+    <main>
+      <section class="hero fade-in" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Connection Planner</p>
+          <h1>Deine Freundschaften verdienen ein System.</h1>
+          <p>
+            Der Connection Planner hilft dir, die Menschen zu pflegen, die wirklich
+            zählen – mit Struktur, Tiefe und kleinen Gesten. Kein Overload, nur ein
+            Ritual, das dich erinnert: Nähe ist eine Entscheidung.
+          </p>
+          <div class="hero-cta">
+            <button class="cta-button" type="button" data-scroll="#waitlist">
+              Auf die Warteliste
+            </button>
+            <p class="microcopy">Kostenlos. Kein Spam. Du erfährst als Erste/r vom Launch.</p>
           </div>
-        </nav>
-        <div class="hero">
-          <div>
-            <h1>
-              Ein System für Freundschaften – mit derselben Hingabe wie für dein
-              Business, deinen Körper oder deine Routinen.
-            </h1>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <svg viewBox="0 0 400 320" role="presentation">
+            <path
+              d="M210 300c0-40 42-72 42-120 0-48-32-72-32-112"
+              fill="none"
+              stroke="#334fb4"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+            <path
+              d="M170 300c0-32-56-64-56-112s48-72 48-120"
+              fill="none"
+              stroke="rgba(18,18,18,0.3)"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+            <circle cx="248" cy="60" r="18" fill="#334fb4" opacity="0.35" />
+            <circle cx="144" cy="140" r="14" fill="#121212" opacity="0.15" />
+            <circle cx="212" cy="196" r="16" fill="#334fb4" opacity="0.5" />
+            <rect x="90" y="260" width="220" height="28" rx="14" fill="#f3f3f3" />
+          </svg>
+        </div>
+      </section>
+
+      <section id="mirror" class="section fade-in">
+        <p class="eyebrow">Hand aufs Herz...</p>
+        <div class="mirror-body">
+          <p>Wann hast du zuletzt einen Freund angerufen – einfach so?</p>
+          <p>
+            Nicht weil er Geburtstag hatte. Nicht weil du etwas brauchtest. Sondern
+            weil er dir wichtig ist.
+          </p>
+          <p>
+            Wir investieren Stunden in Karriere, Körper, Routinen. Aber die Menschen,
+            die uns am meisten bedeuten, rutschen durch. Nicht aus Absicht. Sondern
+            weil das Leben laut ist.
+          </p>
+          <p>Der Connection Planner macht Freundschaft zur Gewohnheit – nicht zum Zufall.</p>
+        </div>
+        <div class="plant-duo" aria-hidden="true">
+          <div class="plant">
+            <svg viewBox="0 0 200 140">
+              <path
+                d="M100 130c0-28-24-34-24-68 0-24 12-40 12-60"
+                stroke="rgba(18,18,18,0.25)"
+                stroke-width="4"
+                fill="none"
+                stroke-linecap="round"
+              />
+              <path
+                d="M88 60c-16-4-28 4-36 22"
+                stroke="#d6d6d6"
+                stroke-width="4"
+                fill="none"
+                stroke-linecap="round"
+              />
+              <circle cx="80" cy="36" r="10" fill="#e2e2e2" />
+            </svg>
+            <p class="plant-label">Vergessene Verbindung</p>
+          </div>
+          <div class="plant">
+            <svg viewBox="0 0 200 140">
+              <path
+                d="M100 130c0-32 32-44 32-84 0-24-8-36-8-56"
+                stroke="#334fb4"
+                stroke-width="4"
+                fill="none"
+                stroke-linecap="round"
+              />
+              <path
+                d="M120 64c18-6 30 6 36 26"
+                stroke="#566cd3"
+                stroke-width="4"
+                fill="none"
+                stroke-linecap="round"
+              />
+              <circle cx="116" cy="32" r="12" fill="#334fb4" opacity="0.45" />
+              <circle cx="150" cy="78" r="10" fill="#334fb4" opacity="0.25" />
+            </svg>
+            <p class="plant-label">Gepflegte Nähe</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="solution" class="section fade-in">
+        <p class="eyebrow">Dein emotionales Betriebssystem</p>
+        <h2 class="section-title">Freundschaft bekommt Struktur, Tiefe und Rituale.</h2>
+        <div class="pillars">
+          <div class="pillar">
+            <strong>Struktur für das Unstrukturierbare</strong>
             <p>
-              Der Connection Planner baut Verbindung als Gewohnheit auf:
-              strukturierte Rituale, Mikro-Momente und klare Reviews, damit dein
-              sozialer Garten bereit für jede spontane Gartenparty bleibt.
+              Ein Kalender, der nicht Deadlines trackt, sondern Menschen. Erinnerungen
+              für Nachrichten, Anrufe, Spaziergänge. Du siehst, wann ihr zuletzt
+              gesprochen habt – und was als Nächstes gut tut.
             </p>
-            <form>
-              <input type="email" placeholder="E-Mail-Adresse" required />
-              <button type="submit">Warteliste beitreten</button>
+          </div>
+          <div class="pillar">
+            <strong>Tiefe statt Smalltalk</strong>
+            <p>
+              Kuratierte Fragen öffnen Räume – vom Warm-up bis Deep Talk. Für Abende,
+              Roadtrips, die fünf Minuten zwischen Meetings. Gespräche, die wirklich
+              nähren.
+            </p>
+          </div>
+          <div class="pillar">
+            <strong>Rituale, die bleiben</strong>
+            <p>
+              Kleine Gewohnheiten, die Nähe verankern: eine Nachricht pro Woche, ein
+              Check-in pro Monat, ein Mini-Brief nach besonderen Momenten. Micro-Commitments,
+              die groß wirken.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="philosophy" class="section fade-in">
+        <p class="eyebrow">Warum das alles?</p>
+        <h2 class="section-title">Freundschaft ist kein Zufall. Sie ist eine Entscheidung.</h2>
+        <p class="section-copy">
+          Inspiriert von den Habit-Prinzipien eines James Clear haben wir ein System
+          gebaut, das Verbindung zur Routine macht. Nicht robotisch. Nicht gezwungen.
+          Sondern achtsam, warm und menschlich. Weil die Menschen, die dich wirklich
+          kennen, dein größter Reichtum sind.
+        </p>
+        <p class="quote">
+          „Jede Woche ein Schritt näher – jede Nachricht zählt.“
+          <span>Connection Planner</span>
+        </p>
+      </section>
+
+      <section id="proof" class="section fade-in">
+        <p class="eyebrow">Für Menschen, die bewusst leben.</p>
+        <div class="proof-card">
+          <p>
+            Der Connection Planner ist für alle, die Notion-Templates für ihre Ziele
+            nutzen, Atomic Habits gelesen haben und wissen: Die besten Dinge im Leben
+            brauchen Pflege.
+          </p>
+          <p>
+            Über bewusste Routinen hinaus erinnert dich der Planner daran, wer du sein
+            willst – Freund, Freundin, Mensch mit offenen Armen.
+          </p>
+          <div class="counter">
+            <span id="waitlist-count" data-target="527">0</span>
+            <span class="counter-label">auf der Warteliste</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="waitlist" class="section waitlist fade-in" data-state="default">
+        <div class="waitlist-card">
+          <div class="default-state">
+            <h2>Bereit, deinen Garten zu pflegen?</h2>
+            <p>
+              Trag dich ein und erfahre als Erste/r, wenn der Connection Planner
+              verfügbar ist. Du erhältst ruhige Updates – keine Ablenkungen, nur das,
+              was Verbindung stärkt.
+            </p>
+            <form id="waitlist-form" novalidate>
+              <label class="sr-only" for="email">Deine E-Mail-Adresse</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Deine E-Mail-Adresse"
+                autocomplete="email"
+                required
+              />
+              <button type="submit" class="submit-button">Ich bin dabei</button>
             </form>
             <p class="microcopy">
-              Softer Roll-out, limitierte Plätze. Early-Access-Rituale inklusive.
+              Kein Spam. Nur Updates zum Launch. Du kannst dich jederzeit abmelden.
             </p>
           </div>
-          <div class="hero-panel">
-            <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.85rem;">
-              Purpose
-            </p>
-            <h2 style="margin-top: 8px; font-size: 1.6rem;">
-              Das emotionale Betriebssystem für Freundschaft
-            </h2>
+          <div class="success-state" aria-live="polite">
+            <h2>Du bist auf der Liste! 🌱</h2>
             <p>
-              Menschen verlieren in der Hektik des Lebens die Tiefe ihrer
-              Freundschaften. Der Planner hilft dir, Nähe bewusst zu gestalten –
-              inspiriert von Habit Stacking und Relationship Capital.
+              Wir melden uns, sobald es losgeht. Bis dahin: Ruf einen Freund an.
+              Einfach so.
             </p>
-            <ul style="padding-left: 18px; margin: 0; color: rgba(255, 255, 255, 0.85);">
-              <li>Verbindung wird planbar, nicht zufällig.</li>
-              <li>Mikromomente schaffen konstant Sichtbarkeit.</li>
-              <li>Strukturierte Rituale verstärken emotionale Tiefe.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <main>
-      <section id="why">
-        <div class="shell">
-          <div class="section-title">Warum es existiert</div>
-          <h2 class="section-headline">Lebensqualität sichtbar machen</h2>
-          <p class="section-copy">
-            Für Komfort, Körper und Karriere investieren wir bewusst – doch
-            Freundschaften bleiben oft unsichtbar. Der Connection Planner macht
-            die wichtigsten Menschen in deinem Leben trackbar, priorisiert und
-            regelmäßig gefeiert.
-          </p>
-          <div class="grid">
-            <div class="card">
-              <h3>Emotionaler Greenkeeper</h3>
-              <p>
-                Wenn Freundschaften Pflanzen wären – wie sähe dein Garten aus?
-                Der Planner hilft dir, zu gießen, zu pflegen und die nächste
-                Gartenparty vorzubereiten.
-              </p>
-            </div>
-            <div class="card">
-              <h3>Verbindung als Gewohnheit</h3>
-              <p>
-                Mikromomente, Erinnerungen und Rituale verwandeln Nähe in eine
-                wiederholbare Routine – jede Nachricht zählt.
-              </p>
-            </div>
-            <div class="card">
-              <h3>Vulnerabilität als Eintrittskarte</h3>
-              <p>
-                Tiefe Fragen und klare Reflexionen öffnen Gespräche für echte
-                Nähe und mentale Gesundheit.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="os">
-        <div class="shell">
-          <div class="section-title">Blueprint</div>
-          <h2 class="section-headline">
-            Das modulare System aus physischen & digitalen Ritualen
-          </h2>
-          <p class="section-copy">
-            Vom persönlichen „Über mich“ bis zum Begegnungs-Log: jedes Modul
-            liefert Prompts, Follow-ups und Habit-Loops, um Freundschaften wie
-            Relationship Capital zu pflegen.
-          </p>
-          <div class="grid">
-            <div class="card">
-              <h3>Über-mich-Monografie</h3>
-              <p>
-                Reflektiere Herkunft, aktuelle Herausforderungen und Ängste – für
-                authentische Offenheit und geteilte Verwundbarkeit.
-              </p>
-            </div>
-            <div class="card">
-              <h3>Freundschafts-Kalender</h3>
-              <p>
-                Minimalistischer Kalender mit Ritual-Terminen, Follow-up Prompts
-                und KPI für Deeptalks – inspiriert von 1% besser.
-              </p>
-            </div>
-            <div class="card">
-              <h3>Friendship Capsules</h3>
-              <p>
-                Herausnehmbare Hefte pro Freund – Steckbrief, Erinnerungen,
-                Übergabe-Modus für tiefe Loops.
-              </p>
-            </div>
-            <div class="card">
-              <h3>Begegnungs-Notizbuch</h3>
-              <p>
-                2-Minuten-Reflexion nach jedem Treffen + Follow-up Prompts, damit
-                jedes Gespräch nachhallt.
-              </p>
-            </div>
-            <div class="card">
-              <h3>Heart Prompts</h3>
-              <p>
-                Kuratierte Fragen von Warm-up bis Depth Zone – perfekt für
-                Spaziergänge, Roadtrips, Abende.
-              </p>
-            </div>
-            <div class="card">
-              <h3>Habit Design</h3>
-              <p>
-                Weekly Review, Mini-Geste, Reward, Momentum – Atomic Habit Loop
-                für Freundschaftsroutinen.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="funnel">
-        <div class="shell">
-          <div class="section-title">Sales Funnel</div>
-          <h2 class="section-headline">So führt der Planner dich zu Nähe</h2>
-          <div class="section-copy">
-            Drei klar definierte Phasen begleiten jede Nutzer·in: von
-            Selbsterkenntnis über ritualisierte Touchpoints bis zur geteilten
-            Tiefe – ein Funnel, der an Service Design erinnert.
-          </div>
-          <div class="grid funnel-steps">
-            <div class="card">
-              <span>1 · Selbsterkenntnis</span>
-              <h3>Überblick schaffen</h3>
-              <p>
-                Identifiziere Prioritäten, erkenne Leerstellen und baue deinen
-                persönlichen Blueprint auf.
-              </p>
-            </div>
-            <div class="card">
-              <span>2 · Ritualisieren</span>
-              <h3>Mikromomente planen</h3>
-              <p>
-                Kalenderimpulse, Capsules und Heart Prompts erzeugen wöchentliche
-                Nähe – alles in einer klaren Oberfläche.
-              </p>
-            </div>
-            <div class="card">
-              <span>3 · Teilen & vertiefen</span>
-              <h3>Freundschaft zeigen</h3>
-              <p>
-                Übergabe-Hefte, Follow-ups und Begegnungs-Notizen verankern
-                Verbindlichkeit und schaffen Beziehungskapital.
-              </p>
-            </div>
           </div>
         </div>
       </section>
     </main>
 
-    <section>
-      <div class="shell">
-        <div class="cta-section">
-          <div class="section-title">Warteliste</div>
-          <h2 class="section-headline" style="margin-bottom: 16px;">
-            Connection Momentum starten?
-          </h2>
-          <p class="section-copy" style="margin-bottom: 24px;">
-            Trage dich ein und erhalte Templates, Ritual-Prompts und limitierte
-            Inserts, bevor der Planner offiziell startet.
-          </p>
-          <form>
-            <input type="email" placeholder="E-Mail-Adresse" required />
-            <button type="submit">Early Access sichern</button>
-          </form>
-          <p class="microcopy">
-            Keine Spam-Mails. Nur Signale, die Freundschaften lebendig halten.
-          </p>
-        </div>
+    <footer class="fade-in visible">
+      <span class="logo">Connection Planner</span>
+      <p>Made with ❤️ für echte Verbindungen.</p>
+      <div class="legal-links">
+        <a href="/impressum" target="_blank" rel="noreferrer noopener">Impressum</a>
+        <span>·</span>
+        <a href="/datenschutz" target="_blank" rel="noreferrer noopener">Datenschutz</a>
+        <span>·</span>
+        <a href="https://www.instagram.com" target="_blank" rel="noreferrer noopener">Instagram</a>
       </div>
-    </section>
-
-    <footer>
-      © 2025 Connection Planner · Das emotionale Betriebssystem für
-      Freundschaften
     </footer>
+
+    <script>
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const fadeElements = document.querySelectorAll(".fade-in");
+
+      if (!reduceMotion && "IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+
+        fadeElements.forEach((el) => observer.observe(el));
+      } else {
+        fadeElements.forEach((el) => el.classList.add("visible"));
+      }
+
+      document.querySelectorAll("[data-scroll]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const target = document.querySelector(button.dataset.scroll);
+          target?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+        });
+      });
+
+      const counterEl = document.getElementById("waitlist-count");
+      if (counterEl && "IntersectionObserver" in window) {
+        const targetValue = parseInt(counterEl.dataset.target, 10) || 0;
+        const counterObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                animateCounter(counterEl, targetValue);
+                counterObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.4 }
+        );
+        counterObserver.observe(counterEl);
+      } else if (counterEl) {
+        counterEl.textContent = counterEl.dataset.target + "+";
+      }
+
+      function animateCounter(element, target) {
+        const duration = 1200;
+        const start = performance.now();
+
+        function tick(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const value = Math.floor(progress * target);
+          element.textContent = value + "+";
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+          }
+        }
+
+        requestAnimationFrame(tick);
+      }
+
+      const waitlistSection = document.getElementById("waitlist");
+      const waitlistForm = document.getElementById("waitlist-form");
+
+      if (waitlistForm) {
+        waitlistForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const emailInput = waitlistForm.querySelector('input[type="email"]');
+          if (!emailInput.checkValidity()) {
+            emailInput.reportValidity();
+            return;
+          }
+
+          setTimeout(() => {
+            waitlistSection?.setAttribute("data-state", "success");
+            waitlistForm.reset();
+          }, 400);
+        });
+      }
+    </script>
   </body>
 </html>
