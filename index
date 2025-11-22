@@ -1,1 +1,424 @@
-Hello World
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Connection Planner</title>
+    <style>
+      :root {
+        --bg: #f4f6f8;
+        --surface: #ffffff;
+        --text: #1a1f36;
+        --muted: #5f6c8f;
+        --accent: #2563eb;
+        --accent-soft: #dbe8ff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      .shell {
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      header {
+        background: linear-gradient(120deg, #0f6fec, #62a8ff);
+        padding: 32px 0 80px;
+        color: white;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0 24px;
+      }
+
+      nav span {
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+
+      nav a {
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+        margin-left: 24px;
+        font-size: 0.95rem;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 48px;
+        align-items: center;
+        padding-top: 32px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 4vw, 3.8rem);
+        margin: 0 0 24px;
+        letter-spacing: -0.03em;
+      }
+
+      .hero p {
+        margin: 0 0 24px;
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.87);
+      }
+
+      form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      input[type="email"] {
+        flex: 1 1 260px;
+        padding: 14px 18px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        background: rgba(255, 255, 255, 0.95);
+        font-size: 1rem;
+      }
+
+      button {
+        padding: 14px 22px;
+        border-radius: 8px;
+        border: none;
+        background: var(--accent);
+        color: white;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 150ms ease, transform 150ms ease;
+      }
+
+      button:hover {
+        background: #1f4fbf;
+        transform: translateY(-1px);
+      }
+
+      .hero-panel {
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 16px;
+        padding: 32px;
+        backdrop-filter: blur(6px);
+      }
+
+      main section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        font-size: 0.9rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 16px;
+      }
+
+      .section-headline {
+        font-size: clamp(2rem, 3vw, 2.6rem);
+        margin: 0 0 24px;
+      }
+
+      .section-copy {
+        max-width: 720px;
+        margin-bottom: 48px;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+      }
+
+      .card {
+        background: var(--surface);
+        border-radius: 14px;
+        padding: 28px;
+        border: 1px solid #e3e8f5;
+        box-shadow: 0 12px 24px rgba(15, 23, 42, 0.06);
+      }
+
+      .card h3 {
+        margin-top: 0;
+        font-size: 1.15rem;
+      }
+
+      .card p {
+        color: var(--muted);
+        font-size: 0.98rem;
+      }
+
+      .funnel-steps .card {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .funnel-steps span {
+        font-weight: 600;
+        color: var(--accent);
+      }
+
+      .cta-section {
+        background: var(--surface);
+        border-radius: 18px;
+        padding: 48px;
+        box-shadow: 0 18px 35px rgba(15, 23, 42, 0.08);
+      }
+
+      .microcopy {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-top: 12px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 40px 24px 60px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 640px) {
+        header {
+          border-bottom-left-radius: 32px;
+          border-bottom-right-radius: 32px;
+        }
+
+        .cta-section {
+          padding: 32px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="shell">
+        <nav>
+          <span>Connection Planner</span>
+          <div>
+            <a href="#why">Purpose</a>
+            <a href="#os">Blueprint</a>
+            <a href="#funnel">Funnel</a>
+          </div>
+        </nav>
+        <div class="hero">
+          <div>
+            <h1>
+              Ein System für Freundschaften – mit derselben Hingabe wie für dein
+              Business, deinen Körper oder deine Routinen.
+            </h1>
+            <p>
+              Der Connection Planner baut Verbindung als Gewohnheit auf:
+              strukturierte Rituale, Mikro-Momente und klare Reviews, damit dein
+              sozialer Garten bereit für jede spontane Gartenparty bleibt.
+            </p>
+            <form>
+              <input type="email" placeholder="E-Mail-Adresse" required />
+              <button type="submit">Warteliste beitreten</button>
+            </form>
+            <p class="microcopy">
+              Softer Roll-out, limitierte Plätze. Early-Access-Rituale inklusive.
+            </p>
+          </div>
+          <div class="hero-panel">
+            <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.85rem;">
+              Purpose
+            </p>
+            <h2 style="margin-top: 8px; font-size: 1.6rem;">
+              Das emotionale Betriebssystem für Freundschaft
+            </h2>
+            <p>
+              Menschen verlieren in der Hektik des Lebens die Tiefe ihrer
+              Freundschaften. Der Planner hilft dir, Nähe bewusst zu gestalten –
+              inspiriert von Habit Stacking und Relationship Capital.
+            </p>
+            <ul style="padding-left: 18px; margin: 0; color: rgba(255, 255, 255, 0.85);">
+              <li>Verbindung wird planbar, nicht zufällig.</li>
+              <li>Mikromomente schaffen konstant Sichtbarkeit.</li>
+              <li>Strukturierte Rituale verstärken emotionale Tiefe.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="why">
+        <div class="shell">
+          <div class="section-title">Warum es existiert</div>
+          <h2 class="section-headline">Lebensqualität sichtbar machen</h2>
+          <p class="section-copy">
+            Für Komfort, Körper und Karriere investieren wir bewusst – doch
+            Freundschaften bleiben oft unsichtbar. Der Connection Planner macht
+            die wichtigsten Menschen in deinem Leben trackbar, priorisiert und
+            regelmäßig gefeiert.
+          </p>
+          <div class="grid">
+            <div class="card">
+              <h3>Emotionaler Greenkeeper</h3>
+              <p>
+                Wenn Freundschaften Pflanzen wären – wie sähe dein Garten aus?
+                Der Planner hilft dir, zu gießen, zu pflegen und die nächste
+                Gartenparty vorzubereiten.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Verbindung als Gewohnheit</h3>
+              <p>
+                Mikromomente, Erinnerungen und Rituale verwandeln Nähe in eine
+                wiederholbare Routine – jede Nachricht zählt.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Vulnerabilität als Eintrittskarte</h3>
+              <p>
+                Tiefe Fragen und klare Reflexionen öffnen Gespräche für echte
+                Nähe und mentale Gesundheit.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="os">
+        <div class="shell">
+          <div class="section-title">Blueprint</div>
+          <h2 class="section-headline">
+            Das modulare System aus physischen & digitalen Ritualen
+          </h2>
+          <p class="section-copy">
+            Vom persönlichen „Über mich“ bis zum Begegnungs-Log: jedes Modul
+            liefert Prompts, Follow-ups und Habit-Loops, um Freundschaften wie
+            Relationship Capital zu pflegen.
+          </p>
+          <div class="grid">
+            <div class="card">
+              <h3>Über-mich-Monografie</h3>
+              <p>
+                Reflektiere Herkunft, aktuelle Herausforderungen und Ängste – für
+                authentische Offenheit und geteilte Verwundbarkeit.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Freundschafts-Kalender</h3>
+              <p>
+                Minimalistischer Kalender mit Ritual-Terminen, Follow-up Prompts
+                und KPI für Deeptalks – inspiriert von 1% besser.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Friendship Capsules</h3>
+              <p>
+                Herausnehmbare Hefte pro Freund – Steckbrief, Erinnerungen,
+                Übergabe-Modus für tiefe Loops.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Begegnungs-Notizbuch</h3>
+              <p>
+                2-Minuten-Reflexion nach jedem Treffen + Follow-up Prompts, damit
+                jedes Gespräch nachhallt.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Heart Prompts</h3>
+              <p>
+                Kuratierte Fragen von Warm-up bis Depth Zone – perfekt für
+                Spaziergänge, Roadtrips, Abende.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Habit Design</h3>
+              <p>
+                Weekly Review, Mini-Geste, Reward, Momentum – Atomic Habit Loop
+                für Freundschaftsroutinen.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="funnel">
+        <div class="shell">
+          <div class="section-title">Sales Funnel</div>
+          <h2 class="section-headline">So führt der Planner dich zu Nähe</h2>
+          <div class="section-copy">
+            Drei klar definierte Phasen begleiten jede Nutzer·in: von
+            Selbsterkenntnis über ritualisierte Touchpoints bis zur geteilten
+            Tiefe – ein Funnel, der an Service Design erinnert.
+          </div>
+          <div class="grid funnel-steps">
+            <div class="card">
+              <span>1 · Selbsterkenntnis</span>
+              <h3>Überblick schaffen</h3>
+              <p>
+                Identifiziere Prioritäten, erkenne Leerstellen und baue deinen
+                persönlichen Blueprint auf.
+              </p>
+            </div>
+            <div class="card">
+              <span>2 · Ritualisieren</span>
+              <h3>Mikromomente planen</h3>
+              <p>
+                Kalenderimpulse, Capsules und Heart Prompts erzeugen wöchentliche
+                Nähe – alles in einer klaren Oberfläche.
+              </p>
+            </div>
+            <div class="card">
+              <span>3 · Teilen & vertiefen</span>
+              <h3>Freundschaft zeigen</h3>
+              <p>
+                Übergabe-Hefte, Follow-ups und Begegnungs-Notizen verankern
+                Verbindlichkeit und schaffen Beziehungskapital.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section>
+      <div class="shell">
+        <div class="cta-section">
+          <div class="section-title">Warteliste</div>
+          <h2 class="section-headline" style="margin-bottom: 16px;">
+            Connection Momentum starten?
+          </h2>
+          <p class="section-copy" style="margin-bottom: 24px;">
+            Trage dich ein und erhalte Templates, Ritual-Prompts und limitierte
+            Inserts, bevor der Planner offiziell startet.
+          </p>
+          <form>
+            <input type="email" placeholder="E-Mail-Adresse" required />
+            <button type="submit">Early Access sichern</button>
+          </form>
+          <p class="microcopy">
+            Keine Spam-Mails. Nur Signale, die Freundschaften lebendig halten.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 Connection Planner · Das emotionale Betriebssystem für
+      Freundschaften
+    </footer>
+  </body>
+</html>
